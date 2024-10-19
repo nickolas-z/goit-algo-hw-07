@@ -195,6 +195,20 @@ class AVLTree:
         """
         return self.find_min_value(self.__root)
 
+    def find_sum(self, node):
+        """
+        Обчислює суму всіх значень у дереві, починаючи з заданого вузла.
+        """
+        if node is None:
+            return 0
+        return node.key + self.find_sum(node.left) + self.find_sum(node.right)
+
+    def get_sum(self):
+        """
+        Знаходить суму всіх значень у дереві.
+        """
+        return self.find_sum(self.__root)
+
     def __str__(self):
         """
         Повертає рядкове представлення AVL-дерева для візуалізації.
@@ -218,3 +232,4 @@ if __name__ == "__main__":
 
     print("Найбільше значення у дереві:", tree.find_max())
     print("Найменше значення у дереві:", tree.find_min())
+    print("Сума всіх значень у дереві:", tree.get_sum())

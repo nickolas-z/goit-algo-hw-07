@@ -15,11 +15,10 @@ def find_min_value(node):
 def main():
     """Main function"""
     avl_tree = AVLTree()
-    root = None
     keys = random.sample(range(-100, 100), 15)
 
     for key in keys:
-        root = avl_tree.insert_key(key)
+        avl_tree.insert_key(key)
 
     print(avl_tree)
 
