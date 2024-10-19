@@ -16,7 +16,7 @@
 
 ### Ресурси
 - [task1.py](./task1.py)
-- [graph_data.py](./graph_data.py)
+- [AVLTree.py](./AVLTree.py)
 - [Module helpers](./helpers)
 
 ## Завдання 2
@@ -27,7 +27,7 @@
 
 ### Ресурси
 - [task2.py](./task2.py)
-- [graph_data.py](./graph_data.py)
+- [AVLTree.py](./AVLTree.py)
 - [Module helpers](./helpers)
 
 ## Завдання 3
@@ -38,7 +38,7 @@
 
 ### Ресурси
 - [task3.py](./task3.py)
-- [graph_data.py](./graph_data.py)
+- [AVLTree.py](./AVLTree.py)
 - [Module helpers](./helpers)
 
 ## Завдання 4
@@ -79,7 +79,7 @@ root_comment.display()
 
 ### Ресурси
 - [task4.py](./task4.py)
-- [graph_data.py](./graph_data.py)
+- [AVLTree.py](./AVLTree.py)
 - [Module helpers](./helpers)
 
 ## Додатково

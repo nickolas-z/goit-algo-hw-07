@@ -17,11 +17,11 @@ class AVLNode:
 class AVLTree:
     def __init__(self):
         self.__root = None
-    
+
     def get_root(self):
         """ Повертає корінь дерева. """
         return self.__root
-    
+
     def get_height(self, node):
         """
         Повертає висоту заданого вузла.
@@ -70,14 +70,23 @@ class AVLTree:
 
         return x
 
-    def min_value_node(self, node):
+    def find_min_value(self, node):
         """
-        Знаходить вузол з найменшим значенням у піддереві, коренем якого є заданий вузол.
+        Знаходить найменше значення у дереві, коренем якого є заданий вузол.
         """
         current = node
-        while current.left is not None:
+        while current and current.left:
             current = current.left
-        return current
+        return current.key if current else None
+
+    def find_max_value(self, node):
+        """
+        Знаходить найбільше значення у дереві, коренем якого є заданий вузол.
+        """
+        current = node
+        while current and current.right:
+            current = current.right
+        return current.key if current else None
 
     def insert(self, root, key):
         """
@@ -136,7 +145,7 @@ class AVLTree:
                 root = None
                 return temp
 
-            temp = self.min_value_node(root.right)
+            temp = self.find_min_value(root.right)
             root.key = temp.key
             root.right = self.delete_node(root.right, temp.key)
 
@@ -180,6 +189,11 @@ class AVLTree:
         Знаходить найбільше значення в дереві.
         """
         return self.find_max_value(self.__root)
+    def find_min(self):
+        """
+        Знаходить найменше значення в дереві.
+        """
+        return self.find_min_value(self.__root)
 
     def __str__(self):
         """
@@ -200,6 +214,7 @@ if __name__ == "__main__":
     key_to_delete = 10
     tree.delete_key(key_to_delete)
     print(f"\nДерево після видалення ключа {key_to_delete}:")
-    print(tree)
+    print(tree, end="\n\n")
 
-    print("\nНайбільше значення у дереві:", tree.find_max())
+    print("Найбільше значення у дереві:", tree.find_max())
+    print("Найменше значення у дереві:", tree.find_min())
