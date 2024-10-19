@@ -1,11 +1,11 @@
 class AVLNode:
-    def __init__(self, key):
+    def __init__(self, key)->None:
         self.key = key
         self.height = 1
         self.left = None
         self.right = None
 
-    def __str__(self, level=0, prefix="Root: "):
+    def __str__(self, level=0, prefix="Root: ")->str:
         ret = "\t" * level + prefix + str(self.key) + "\n"
         if self.left:
             ret += self.left.__str__(level + 1, "L--- ")
@@ -15,14 +15,14 @@ class AVLNode:
 
 
 class AVLTree:
-    def __init__(self):
+    def __init__(self)->None:
         self.__root = None
 
-    def get_root(self):
+    def get_root(self)->AVLNode:
         """ Повертає корінь дерева. """
         return self.__root
 
-    def get_height(self, node):
+    def get_height(self, node)->int:
         """
         Повертає висоту заданого вузла.
         Якщо вузол відсутній, повертає 0.
@@ -31,7 +31,7 @@ class AVLTree:
             return 0
         return node.height
 
-    def get_balance(self, node):
+    def get_balance(self, node)->int:
         """
         Обчислює баланс-фактор для заданого вузла.
         Баланс-фактор показує різницю між висотами лівого та правого піддерева.
@@ -40,7 +40,7 @@ class AVLTree:
             return 0
         return self.get_height(node.left) - self.get_height(node.right)
 
-    def left_rotate(self, z):
+    def left_rotate(self, z)->AVLNode:
         """
         Виконує лівий поворот для заданого вузла.
         """
@@ -55,7 +55,7 @@ class AVLTree:
 
         return y
 
-    def right_rotate(self, y):
+    def right_rotate(self, y)->AVLNode:
         """
         Виконує правий поворот для заданого вузла.
         """
@@ -70,7 +70,7 @@ class AVLTree:
 
         return x
 
-    def find_min_value(self, node):
+    def find_min_value(self, node)->int:
         """
         Знаходить найменше значення у дереві, коренем якого є заданий вузол.
         """
@@ -79,7 +79,7 @@ class AVLTree:
             current = current.left
         return current.key if current else None
 
-    def find_max_value(self, node):
+    def find_max_value(self, node)->int:
         """
         Знаходить найбільше значення у дереві, коренем якого є заданий вузол.
         """
@@ -88,7 +88,7 @@ class AVLTree:
             current = current.right
         return current.key if current else None
 
-    def insert(self, root, key):
+    def insert(self, root, key)->AVLNode:
         """
         Вставляє новий вузол з ключем у дерево.
         Повертає новий корінь дерева після вставки.
@@ -123,7 +123,7 @@ class AVLTree:
 
         return root
 
-    def delete_node(self, root, key):
+    def delete_node(self, root, key)->AVLNode:
         """
         Видаляє вузол з ключем із дерева.
         Повертає новий корінь дерева після видалення.
@@ -172,30 +172,30 @@ class AVLTree:
 
         return root
 
-    def insert_key(self, key):
+    def insert_key(self, key)->None:
         """
         Вставляє новий ключ у дерево.
         """
         self.__root = self.insert(self.__root, key)
 
-    def delete_key(self, key):
+    def delete_key(self, key)->None:
         """
         Видаляє ключ із дерева.
         """
         self.__root = self.delete_node(self.__root, key)
 
-    def find_max(self):
+    def find_max(self)->int:
         """
         Знаходить найбільше значення в дереві.
         """
         return self.find_max_value(self.__root)
-    def find_min(self):
+    def find_min(self)->int:
         """
         Знаходить найменше значення в дереві.
         """
         return self.find_min_value(self.__root)
 
-    def find_sum(self, node):
+    def find_sum(self, node)->int:
         """
         Обчислює суму всіх значень у дереві, починаючи з заданого вузла.
         """
@@ -203,13 +203,13 @@ class AVLTree:
             return 0
         return node.key + self.find_sum(node.left) + self.find_sum(node.right)
 
-    def get_sum(self):
+    def get_sum(self)->int:
         """
         Знаходить суму всіх значень у дереві.
         """
         return self.find_sum(self.__root)
 
-    def __str__(self):
+    def __str__(self)->str:
         """
         Повертає рядкове представлення AVL-дерева для візуалізації.
         """
